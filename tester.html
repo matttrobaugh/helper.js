@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+<head>
+
+<title>Tester for helper.js</title>
+
+<script type="text/javascript" src="helper.js"></script>
+<script type="text/javascript">
+
+	function testBrowserDims(){
+	
+		document.getElementById("widthTest").innerHTML = helper.getBrowserWidth();
+		document.getElementById("heightTest").innerHTML = helper.getBrowserHeight();
+	}
+
+</script>
+
+</head>
+<body>
+
+<script type="text/javascript">
+
+var helper = new Helper();
+
+</script>
+
+<h2>Tester for helper.js</h2>
+<hr/>
+
+<h3>getBrowserWidth / getBrowserHeight</h3>
+<input type="button" value="Test" onClick="testBrowserDims();" />
+<p>Width: <span id="widthTest"></span></p>
+<p>Height: <span id="heightTest"></span></p>
+<br/>
+<hr/>
+
+<h3>alertLog</h3>
+<input type="button" value="Test alertLog" onClick="helper.alertLog('alertLog test successful');" />
+<br/><br/>
+<hr/>
+
+</body>
+</html>
