@@ -47,6 +47,42 @@ function Helper(){
 	}
 	
 	
+	
+	this.ajax = function(path, func){
+		
+		var req;
+		
+		if (window.ActiveXObject){
+			
+			req = new ActiveXObject("Microsoft.XMLHTTP");
+		}
+		else{
+			
+			req = new XMLHttpRequest();
+		}
+		
+		req.open("GET", path, true);
+		
+		req.onreadystatechange = function(){
+			
+			if(req.readyState == 4){
+				
+				if(req.status == 200){
+					
+					// request successful
+					func(req.responseText);
+				}
+				else{
+					
+					// request failed
+					func("");
+				}
+			}
+		}
+		req.send();
+	}
+	
+	
 
 	this.alertLog = function(logText){
 	

@@ -12,6 +12,25 @@
 		document.getElementById("widthTest").innerHTML = helper.getBrowserWidth();
 		document.getElementById("heightTest").innerHTML = helper.getBrowserHeight();
 	}
+	
+	function testAjax(){
+	
+		helper.ajax("ajaxTestA.php" ,displayA);
+		helper.ajax("ajaxTestB.php" ,displayB);
+		helper.ajax("ajaxTestC.php" ,displayC);
+	}
+	function displayA(resp){
+	
+		document.getElementById("ajaxOut").innerHTML += "Test A:<br/>" + resp + "<br/>";
+	}
+	function displayB(resp){
+	
+		document.getElementById("ajaxOut").innerHTML += "Test B:<br/>" + resp + "<br/>";
+	}
+	function displayC(resp){
+	
+		document.getElementById("ajaxOut").innerHTML += "Test C:<br/>" + resp + "<br/>";
+	}
 
 </script>
 
@@ -31,6 +50,12 @@ var helper = new Helper();
 <input type="button" value="Test" onClick="testBrowserDims();" />
 <p>Width: <span id="widthTest"></span></p>
 <p>Height: <span id="heightTest"></span></p>
+<br/>
+<hr/>
+
+<h3>ajax</h3>
+<input type="button" value="Test Ajax" onClick="testAjax();" />
+<div id="ajaxOut"></div>
 <br/>
 <hr/>
 
