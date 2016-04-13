@@ -59,6 +59,14 @@ var helper = new Helper();
 <br/>
 <hr/>
 
+<h3>setTooltip / clearTooltip</h3>
+<div id="tooltipTest1" style="float:left;background-color:#9999ff;" onMouseover="helper.setTooltip(event, 'testing');" onmouseout="helper.clearTooltip();">Hover here to test.</div>
+<div id="tooltipTest2" style="float:right;background-color:#9999ff;" onMouseover="helper.setTooltip(event, 'testing');" onmouseout="helper.clearTooltip();">Hover here to test.</div>
+<br/><br/>
+<div id="tooltipTest3" style="background-color:#9999ff;" onMouseover="helper.setTooltip(event, 'testing');" onmouseout="helper.clearTooltip();">Hover here to test.</div>
+<br/>
+<hr/>
+
 <h3>alertLog</h3>
 <input type="button" value="Test alertLog" onClick="helper.alertLog('alertLog test successful');" />
 <br/><br/>

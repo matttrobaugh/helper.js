@@ -3,6 +3,9 @@
 function Helper(){
 	
 	this.name = "helper";
+	this.tooltipText = "";
+	this.tooltipEvent = null;
+	this.tooltipTimeout = null;
 	
 	
 	
@@ -44,6 +47,69 @@ function Helper(){
 		}
 		
 		return h;
+	}
+	
+	
+	
+	this.setTooltip = function(event, text){
+		
+		this.tooltipText = text;
+		this.tooltipEvent = event;
+		this.tooltipTimeout = setTimeout(this.name + ".displayTooltip()", 500);
+	}
+	
+	this.displayTooltip = function(){
+		
+		if(this.tooltipEvent.pageX){
+			
+			var mouseX = this.tooltipEvent.pageX;
+			var mouseY = this.tooltipEvent.pageY;
+		}
+		else{
+			
+			var mouseX = this.tooltipEvent.clientX + document.body.scrollLeft - document.body.clientLeft;
+			var mouseY = this.tooltipEvent.clientY + document.body.scrollTop - document.body.clientTop;
+		}
+		
+		if(!document.getElementById("helperTooltipDiv")){
+			
+			var dv = document.createElement("div");
+			
+			var atr1 = document.createAttribute("id");
+			atr1.nodeValue = "helperTooltipDiv";
+			dv.setAttributeNode(atr1);
+			
+			var atr2 = document.createAttribute("style");
+			atr2.nodeValue = "background-color: #ffffff; border: solid 1px black; padding: 0px 1px;visibility: hidden; position: absolute; white-space: nowrap;	z-index: 1000;";
+			dv.setAttributeNode(atr2);
+			
+			document.body.appendChild(dv);
+		}
+		
+		var tooltip = document.getElementById("helperTooltipDiv");
+		
+		tooltip.innerHTML = this.tooltipText;
+		
+		var browserWidth = this.getBrowserWidth();
+		var tooltipWidth = tooltip.offsetWidth;
+		
+		if(mouseX + tooltipWidth + 20 > browserWidth && tooltipWidth + 10 <= mouseX){
+			
+			tooltip.style.left = (mouseX - (tooltipWidth + 5)) + "px";
+		}
+		else{
+			
+			tooltip.style.left = (mouseX + 15) + "px";
+		}
+		
+		tooltip.style.top = mouseY + "px";
+		tooltip.style.visibility = "visible";
+	}
+	
+	this.clearTooltip = function(){
+		
+		clearTimeout(this.tooltipTimeout);
+		document.getElementById("helperTooltipDiv").style.visibility = "hidden";
 	}
 	
 	
