@@ -31,6 +31,12 @@
 	
 		document.getElementById("ajaxOut").innerHTML += "Test C:<br/>" + resp + "<br/>";
 	}
+	
+	function testShuffleArray(){
+	
+		testArray = helper.shuffleArray(testArray);
+		document.getElementById("arrayDisplay").innerHTML = testArray.join("&nbsp;&nbsp;&nbsp;");
+	}
 
 </script>
 
@@ -53,6 +59,17 @@ var helper = new Helper();
 <br/>
 <hr/>
 
+<h3>shuffleArray</h3>
+<input type="button" value="Shuffle" onClick="testShuffleArray()" />
+<br/><br/>
+<div id="arrayDisplay"></div>
+<script type="text/javascript">
+	var testArray = new Array(0,1,2,3,4,5,6,7,8,9);
+	document.getElementById("arrayDisplay").innerHTML = testArray.join("&nbsp;&nbsp;&nbsp;");
+</script>
+<br/>
+<hr/>
+
 <h3>ajax</h3>
 <input type="button" value="Test Ajax" onClick="testAjax();" />
 <div id="ajaxOut"></div>
@@ -63,7 +80,7 @@ var helper = new Helper();
 <div id="tooltipTest1" style="float:left;background-color:#9999ff;" onMouseover="helper.setTooltip(event, 'testing');" onmouseout="helper.clearTooltip();">Hover here to test.</div>
 <div id="tooltipTest2" style="float:right;background-color:#9999ff;" onMouseover="helper.setTooltip(event, 'testing');" onmouseout="helper.clearTooltip();">Hover here to test.</div>
 <br/><br/>
-<div id="tooltipTest3" style="background-color:#9999ff;" onMouseover="helper.setTooltip(event, 'testing');" onmouseout="helper.clearTooltip();">Hover here to test.</div>
+<div id="tooltipTest3" style="background-color:#9999ff;text-align:center;" onMouseover="helper.setTooltip(event, 'testing');" onmouseout="helper.clearTooltip();">Hover here to test.</div>
 <br/>
 <hr/>
 

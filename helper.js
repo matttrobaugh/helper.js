@@ -51,6 +51,24 @@ function Helper(){
 	
 	
 	
+	this.shuffleArray = function(array){
+		
+		var i = 0;
+		var j = 0;
+
+		// The Fisher-Yates Shuffle:
+		for (i=array.length-1; i>0; i--){
+			
+			j = Math.floor(Math.random() * (i + 1));
+			temp = array[i];
+			array[i] = array[j];
+			array[j] = temp;
+		}
+		return array;
+	}
+	
+	
+	
 	this.setTooltip = function(event, text){
 		
 		this.tooltipText = text;
